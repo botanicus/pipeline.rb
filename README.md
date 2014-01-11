@@ -20,6 +20,7 @@ It's been proved over and over that splitting app into services and is the way t
 * It's **easy to inspect** what's going on.
 * It's much **easier to split work** on the project between multiple developers.
 * You can **restart services without losing any data**, as they are kept in RabbitMQ.
+* You don't have to introduce any code dependencies: just consume given queue and publish to another one.
 
 # Settings
 
