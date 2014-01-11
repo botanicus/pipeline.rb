@@ -5,8 +5,10 @@ Plugin pipeline infrastructure connected **through RabbitMQ**.
 All the plugins are just **normal Ruby gems**.
 
 ```
-plugin 1 -> [RabbitMQ broker] -> plugin 2
+plugin 1 -> RabbitMQ broker -> plugin 2
 ```
+
+It uses `amq.topic` exchange.
 
 # Why?
 
