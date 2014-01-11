@@ -69,9 +69,25 @@ source 'https://rubygems.org'
 # The app uses pipeline.rb itself.
 gem 'pipeline.rb'
 
+# Tasks.
+gem 'nake'
+
 # Existing pipeline.rb plugins.
-gem 'mail_queue'
+group(:plugins) do
+  gem 'mail_queue'
+end
 ```
+
+```ruby
+#!/usr/bin/env bundle exec nake
+
+# Load all the plugins.
+Bundler.require(:plugins)
+
+require 'pipeline/tasks.rb'
+```
+
+Now run `./tasks.rb declare` to declare
 
 And finally create your app:
 
