@@ -23,16 +23,20 @@ describe Pipeline::Plugin do
 
     let(:config) { subject.config('smtp') }
 
-    it 'contains the global settings' do
+    it "contains the global settings" do
       config[:address].should eql('smtp.gmail.com')
     end
 
-    it 'contains the global settings' do
+    it "contains the global settings" do
       config[:password].should eql('password.local')
     end
 
-    it 'overrides the global settings by the local settings' do
+    it "overrides the global settings by the local settings" do
       config[:user_name].should eql('user.local')
+    end
+
+    it "should not require local settings" do
+      subject.config('test')[:local].should be_false
     end
   end
 end

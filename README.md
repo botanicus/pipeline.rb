@@ -1,5 +1,7 @@
 # About
 
+Plugin pipeline infrastructure connected through RabbitMQ.
+
 # Settings
 
 Pipeline.rb uses JSON for configuration.

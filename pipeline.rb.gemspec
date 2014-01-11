@@ -1,18 +1,24 @@
 #!/usr/bin/env gem build
 
+$LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
+
+require 'pipeline/version'
+
 Gem::Specification.new do |s|
   s.name = 'pipeline.rb'
-  s.version = '0.0.1'
+  s.version = Pipeline::VERSION
   s.authors = ['@botanicus']
   s.homepage = 'http://github.com/botanicus/pipeline.rb'
   s.summary = "Plugin pipeline infrastructure connected through RabbitMQ."
-  s.description = "" # TODO: long description
+  s.description = "#{s.summary}. Asynchronous and robust. Also contains configuration system."
   # s.cert_chain = nil
-  # s.email = Base64.decode64('c3Rhc3RueUAxMDFpZGVhcy5jeg==\n')
+  s.email = 'james@101ideas.cz'
   # s.has_rdoc = true
 
   # files
   s.files = Dir.glob('**/*')
+
+  s.license = 'MIT'
 
   s.require_paths = ['lib']
 
