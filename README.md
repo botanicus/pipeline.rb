@@ -4,6 +4,15 @@ Plugin pipeline infrastructure connected through RabbitMQ.
 
 All the plugins are just normal Ruby gems.
 
+# Why?
+
+It's been proved over and over that splitting app into services and is the way to go, because:
+
+* It's *easier to maintain* such app.
+* *Rewriting components* is easy.
+* It's *easy to scale* by adding more consumers of given service.
+* It's *easy to inspect* what's going on.
+
 # Settings
 
 Pipeline.rb uses JSON for configuration.
