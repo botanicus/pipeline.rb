@@ -24,28 +24,33 @@ And now the local `config/database.local.json`:
 }
 ```
 
-`.gitignore`
+Don't forget to ignore the local settings `.gitignore`:
+
 ```
 config/*.local.json
 ```
 
 # Start
 
-config/amqp.json
+`config/amqp.json`
+
 ```json
 {
-  "vhost":    "example",
-  "user":     "example",
+  "vhost": "example",
+  "user":  "example",
 }
 ```
 
-config/amqp.local.json
+`config/amqp.local.json`
+
 ```json
 {
   "password": "ae28cd87adb5c385117f89e9bd452d18"
 }
 ```
+
 `.gitignore`
+
 ```
 config/*.local.json
 ```
