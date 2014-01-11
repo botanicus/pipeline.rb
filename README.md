@@ -60,3 +60,15 @@ Don't forget to ignore the local settings `.gitignore`:
 ```
 config/*.local.json
 ```
+
+Shop for plugins and add them to your `Gemfile`:
+
+```ruby
+source 'https://rubygems.org'
+
+# The app uses pipeline.rb itself.
+gem 'pipeline.rb'
+
+# Existing pipeline.rb plugins.
+gem 'mail_queue'
+```
