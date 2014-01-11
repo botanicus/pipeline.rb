@@ -2,6 +2,8 @@
 
 Plugin pipeline infrastructure connected through RabbitMQ.
 
+All the plugins are just normal Ruby gems.
+
 # Settings
 
 Pipeline.rb uses JSON for configuration.
@@ -32,9 +34,11 @@ Don't forget to ignore the local settings `.gitignore`:
 config/*.local.json
 ```
 
-# Start
+# HOWTO
 
-`config/amqp.json`
+Pipeline.rb expects you to provide AMQP configuration, so it knows how to connect to RabbitMQ:
+
+`config/amqp.json`:
 
 ```json
 {
@@ -43,7 +47,7 @@ config/*.local.json
 }
 ```
 
-`config/amqp.local.json`
+`config/amqp.local.json`:
 
 ```json
 {
@@ -51,7 +55,7 @@ config/*.local.json
 }
 ```
 
-`.gitignore`
+Don't forget to ignore the local settings `.gitignore`:
 
 ```
 config/*.local.json
