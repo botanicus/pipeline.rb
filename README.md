@@ -1,8 +1,12 @@
 # About
 
-Plugin pipeline infrastructure connected through RabbitMQ.
+Plugin pipeline infrastructure connected **through RabbitMQ**.
 
-All the plugins are just normal Ruby gems.
+All the plugins are just **normal Ruby gems**.
+
+```
+plugin 1 -> [RabbitMQ broker] -> plugin 2
+```
 
 # Why?
 
@@ -13,6 +17,7 @@ It's been proved over and over that splitting app into services and is the way t
 * It's **easy to scale** by adding more consumers of given service.
 * It's **easy to inspect** what's going on.
 * It's much **easier to split work** on the project between multiple developers.
+* You can **restart services without losing any data**, as they are kept in RabbitMQ.
 
 # Settings
 
