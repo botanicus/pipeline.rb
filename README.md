@@ -72,3 +72,23 @@ gem 'pipeline.rb'
 # Existing pipeline.rb plugins.
 gem 'mail_queue'
 ```
+
+And finally create your app:
+
+```ruby
+require 'mail_queue'
+
+# This is already loaded,
+# but just to make it clear
+# that the app is actually
+# just another plugin.
+require 'pipeline/plugin'
+
+class App < Pipeline::Plugin
+  def run
+    EM.add_timer(0.5) do
+      client.publish("Hello World!", 'emails.random')
+    end
+  end
+end
+```
