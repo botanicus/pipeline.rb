@@ -105,7 +105,7 @@ Bundler.require(:plugins)
 require 'pipeline/tasks.rb'
 ```
 
-Now run `./tasks.rb declare` to declare
+Now run `./tasks.rb declare` to declare all the required queues.
 
 And finally create your app:
 
@@ -126,3 +126,13 @@ class App < Pipeline::Plugin
   end
 end
 ```
+
+And finally run it all:
+
+1. Start RabbitMQ.
+2. Start `bin/mail_queue.rb` to send your emails.
+3. Run your app.
+
+# Deployment
+
+TODO: Show example Upstart scripts.
