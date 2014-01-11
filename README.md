@@ -12,6 +12,7 @@ It's been proved over and over that splitting app into services and is the way t
 * *Rewriting components* is easy.
 * It's *easy to scale* by adding more consumers of given service.
 * It's *easy to inspect* what's going on.
+* It's much *easier to split work* on the project between multiple developers.
 
 # Settings
 
