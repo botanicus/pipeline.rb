@@ -5,7 +5,7 @@ require 'pipeline/plugin'
 describe Pipeline::Plugin do
   describe '#new(root)' do
     it "takes one argument which is the root directory" do
-      expect { described_class.new(Dir.pwd) }.not_to raise_error
+      expect { described_class.new(File.join(Dir.pwd, 'spec', 'data', 'app')) }.not_to raise_error
     end
   end
 

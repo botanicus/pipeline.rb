@@ -95,12 +95,17 @@ end
 ```
 
 ```ruby
-#!/usr/bin/env bundle exec nake
+#!/usr/bin/env bundle exec ruby
+
+require 'nake/runner'
 
 # Load all the plugins.
 Bundler.require(:plugins)
 
-require 'pipeline/tasks.rb'
+# Tasks: declare.
+require 'pipeline/tasks'
+
+Nake.run
 ```
 
 Now run `./tasks.rb declare` to declare all the required queues.

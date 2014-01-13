@@ -1,0 +1,52 @@
+GIT
+  remote: git://github.com/botanicus/nake.git
+  revision: 6361daacec1caa6af9e12e7e52e0fcb6cf1b91ac
+  branch: master
+  specs:
+    nake (0.0.9.5)
+      term-ansicolor
+
+GIT
+  remote: git://github.com/botanicus/pipeline-mail_queue.git
+  revision: 5f860a6a01de0a85f181e918f1432c05a20b5b37
+  branch: master
+  specs:
+    pipeline-mail_queue (0.0.1)
+      mail
+      pipeline.rb
+
+GIT
+  remote: git://github.com/botanicus/pipeline.rb.git
+  revision: 345259bc7bc48b8e3a5cc6e8e2594aaefe2bfa96
+  branch: master
+  specs:
+    pipeline.rb (0.0.1)
+      amq-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    amq-client (1.0.4)
+      amq-protocol (>= 1.9.0)
+      eventmachine
+    amq-protocol (1.9.2)
+    eventmachine (1.0.3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25.1)
+    polyglot (0.3.3)
+    term-ansicolor (1.2.2)
+      tins (~> 0.8)
+    tins (0.13.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nake!
+  pipeline-mail_queue!
+  pipeline.rb!

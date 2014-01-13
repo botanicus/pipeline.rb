@@ -25,11 +25,14 @@ module Pipeline
       client
     end
 
+    def initialize
+      @on_open_callbacks = Array.new
+    end
+
     attr_reader :connection, :channel, :exchange, :on_open_callbacks
     def connect(opts)
       @connection = AMQ::Client.connect(opts)
       @channel = AMQ::Client::Channel.new(@connection, 1)
-      @on_open_callbacks = Array.new
 
       @connection.on_open do
         puts "~ Connected to RabbitMQ."
@@ -49,12 +52,14 @@ module Pipeline
     def declare_queue(name, routing_key)
       queue = AMQ::Client::Queue.new(@connection, @channel, name)
 
-      queue.declare(false, true, false, true) do
-        # puts "~ Queue #{queue.name.inspect} is ready"
-      end
+      self.on_open do
+        queue.declare(false, true, false, true) do
+          # puts "~ Queue #{queue.name.inspect} is ready"
+        end
 
-      queue.bind(self.exchange.name, routing_key) do
-        puts "~ Queue #{queue.name} is now bound to #{self.exchange.name} with #{routing_key}"
+        queue.bind(self.exchange.name, routing_key) do
+          puts "~ Queue #{queue.name} is now bound to #{self.exchange.name} with routing key #{routing_key}"
+        end
       end
 
       queue
@@ -73,8 +78,13 @@ module Pipeline
     end
 
     # This runs after the channel is open.
+    # TODO: Why amq-client doesn't support adding multiple callbacks?
     def on_open(&block)
-      self.on_open_callbacks << block
+      if @channel.status == :opening
+        self.on_open_callbacks << block
+      else
+        block.call
+      end
     end
 
     def publish(*args)

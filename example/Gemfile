@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+# Local Machine
+# bundle config local.pipeline-mail_queue ~/Dropbox/Code/pipeline-plugins/mail_queue
+# bundle config local.pipeline.rb ~/Dropbox/Code/sources/pipeline.rb
+# bundle config local.nake ~/Dropbox/Code/sources/nake
+gem 'pipeline.rb', github: 'botanicus/pipeline.rb', branch: 'master'
+gem 'nake', github: 'botanicus/nake', branch: 'master'
+
+group(:plugins) do
+  gem 'pipeline-mail_queue', github: 'botanicus/pipeline-mail_queue', branch: 'master'
+end
