@@ -5,10 +5,10 @@ Plugin pipeline infrastructure connected **through RabbitMQ**.
 All the plugins are just **normal Ruby gems**.
 
 ```
-plugin 1 -> RabbitMQ broker -> plugin 2
+Instance(s) of plugin 1 -> RabbitMQ broker -> Instance(s) of plugin 2
 ```
 
-It uses `amq.topic` exchange.
+It uses `amq.topic` exchange, so you can use globs to consumer from within a plugin OR a custom script. So if you want to see all the messages going through the system, simply create a queue with routing key `#`. Need all the events? `#event#`. Easy as that.
 
 # Why?
 
