@@ -12,7 +12,7 @@ module Pipeline
 
       # Next tick, so we can use it with Thin.
       EM.next_tick do
-        puts "~ Establishing AMQP connection #{config.inspect}"
+        print "~ Establishing AMQP connection #{config.inspect} ... "
         client.connect(config.merge(adapter: 'eventmachine'))
 
         # Set up signals.
@@ -52,7 +52,7 @@ module Pipeline
       @channel = AMQ::Client::Channel.new(@connection, 1)
 
       @connection.on_open do
-        puts "~ Connected to RabbitMQ."
+        puts "\e[1;32m✔\e[0m"
 
         @channel.open do
           self.on_open_callbacks.each do |callback|
