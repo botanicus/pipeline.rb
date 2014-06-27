@@ -7,17 +7,20 @@ require 'timeout'
 # It means, however, that if we restart the broker, we have to restart all the services manually.
 module Pipeline
   class Client
-    def self.boot(config)
+    def self.boot(config = Hash.new)
       client = self.new
 
       # Next tick, so we can use it with Thin.
       EM.next_tick do
+        puts "~ Establishing AMQP connection #{config.inspect}"
         client.connect(config.merge(adapter: 'eventmachine'))
 
         # Set up signals.
         ['INT', 'TERM'].each do |signal|
           Signal.trap(signal) do
             begin
+              # Doesn't work properly on Rubinius until this commit
+              # https://github.com/rubinius/rubinius/commit/3c72c9c7879e14a26cf64def7035e695a4a30e37
               Timeout.timeout(2.5) do
                 puts "~ Received #{signal} signal, terminating AMQP connection."
                 client.disconnect { EM.stop }
