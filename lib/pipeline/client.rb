@@ -21,9 +21,15 @@ module Pipeline
             begin
               # Doesn't work properly on Rubinius until this commit
               # https://github.com/rubinius/rubinius/commit/3c72c9c7879e14a26cf64def7035e695a4a30e37
-              Timeout.timeout(2.5) do
-                puts "~ Received #{signal} signal, terminating AMQP connection."
-                client.disconnect { EM.stop }
+              engine, engine_version, * = RUBY_DESCRIPTION.split(' ')
+              if engine == 'rubinius' && engine_version < '2.2.9'
+                puts "~ Stopping EM directly (as we're on #{RUBY_DESCRIPTION})."
+                exit
+              else
+                Timeout.timeout(2.5) do
+                  puts "~ Received #{signal} signal, terminating AMQP connection."
+                  client.disconnect { EM.stop }
+                end
               end
             rescue Timeout::Error
               puts "~ Time out, exiting now."
