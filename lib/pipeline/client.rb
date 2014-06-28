@@ -70,7 +70,7 @@ module Pipeline
       queue = AMQ::Client::Queue.new(@connection, @channel, name)
 
       self.on_open do
-        queue.declare(false, true, false, true) do
+        queue.declare(false, true, false, false) do
           # puts "~ Queue #{queue.name.inspect} is ready"
         end
 
