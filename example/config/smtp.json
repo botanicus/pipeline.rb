@@ -1,9 +1,6 @@
 {
   "address": "smtp.gmail.com",
   "port": 587,
-  "domain": "101ideas.cz",
-  "user_name": "TODO: Override in config/smtp.local.json",
-  "password": "TODO: Override in config/smtp.local.json",
   "authentication": "plain",
   "enable_starttls_auto": true
 }
